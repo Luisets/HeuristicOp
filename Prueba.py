@@ -1,17 +1,22 @@
-import numpy as np
+# import numpy as np
 
 
 def f(x):
     return 1/x
     pass
+
 def main():
-    tupla = np.array([1, 4, 3, 6, 2])
-    tupla = np.append(tupla[1:5], [9, 5])
-    lista = [2, 5, 8, 1, 3]
-    lista.insert(0, 7)
-    lista.sort(key = f)
+    # tupla = np.array([1, 4, 3, 6, 2])
+    # tupla = np.append(tupla[1:5], [9, 5])
+    # lista = [2, 5, 8, 1, 3]
+    # lista.insert(0, 7)
+    # lista.sort(key = f)
     
-    print(lista)
+    # print(lista)
+
+    tupla = [(1, 9)]*5
+    
+    print(len(tupla))
     pass
 
 if __name__ == "__main__":

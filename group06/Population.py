@@ -2,10 +2,28 @@ import group06.Genome as gn
 import numpy as np
 
 class Population:
-    def __init__(self):
+    #crea la poblacion inicial
+    def __init__(self, popSize, genSize,fitnes, min, max):
+        self.popSize = popSize
+        self.genSize
+        self.fitnes = fitnes
+        self.min = min
+        self.max = max
+        i = 0        
+        self.list = []
+        while i < self.popSize:
+            var = np.random.uniform(min, max, genSize)
+            list.append(gn(var, fitnes(var)))
         pass
 
-    def add(self, index, genome):
+    def __init__(self):
+        self.list = []
+        pass
+
+    def getGenome(self, intdex):
+
+        pass
+    def add(self, genome):
         
         pass
 
@@ -18,7 +36,7 @@ class Population:
 
         pass
 
-    def desOrdered(self,):
+    def desOrdered(self):
         
         pass
 
