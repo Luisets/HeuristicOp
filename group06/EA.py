@@ -33,7 +33,7 @@ class EA(object):
 					pass
 				j+=1
 				pass
-			
+			popu = newGen
 			i+=1
 			pass
 		pass
