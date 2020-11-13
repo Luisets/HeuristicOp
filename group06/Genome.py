@@ -1,6 +1,5 @@
-import numpy as np
 class Genome:
-    
+
     def __init__(self, solution, fitnes):
         self.solution = solution
         self.fitnes = fitnes

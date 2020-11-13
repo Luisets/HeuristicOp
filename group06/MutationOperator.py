@@ -1,7 +1,15 @@
-import group06.Genome as gp
-class MutationOperator:
+import abc
+from abc import ABC
+
+
+class MutationOperator(ABC):
+    __metaclass__ = abc.ABCMeta
+
+    def __init__(self):
+        pass
+
+    @abc.abstractmethod
     def apply(self, genomes):
-        # completar con F
-        mutant = genomes[0].getGenome() + (genomes[3].getGenome - genomes[0].getGenome) + (genomes[1].getGenome - genomes[2].getGenome)
-        return mutant
+        pass
+
     pass
