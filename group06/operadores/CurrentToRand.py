@@ -1,4 +1,4 @@
-from group06.MutationOperator import MutationOperator
+from ..MutationOperator import MutationOperator
 import random
 
 

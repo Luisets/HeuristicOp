@@ -1,19 +1,24 @@
-import group06.Population as pop
-import group06.operadores.CurrentToRand as mut
-import group06.operadores.Arithmetic as cro
+from .Population import Population as Population
+from .operadores.CurrentToRand import CurrentToRand as Mutation
+from .operadores.Arithmetic import Arithmetic as Crossover
+from .operadores.Uniform import Uniforme as Selection
+from .operadores.Elitist import Elitist as Replacement
 
 
 class EA(object):
-    def __init__(self, fitnes, bounds, population):
+    def __init__(self, f_fitnes, bounds, population):
         self.population = population
         self.nVar = len(bounds)
         self.min = bounds[0][0]
         self.max = bounds[0][1]
-        self.fitnes = fitnes
+        self.f_fitnes = f_fitnes
         pass
+
+
 
     def run(self, iteraciones):
         i = 0
+
         popu = pop.Population(self.population, self.fitnes, self.min, self.max)  # conseguimos la poblacion inicial
         while i < iteraciones:
             newGen = pop.Population()

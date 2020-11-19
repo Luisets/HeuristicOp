@@ -1,4 +1,4 @@
-from group06.CrossoverOperator import CrossoverOperator
+from ..MutationOperator import CrossoverOperator
 
 
 class Arithmetic(CrossoverOperator):

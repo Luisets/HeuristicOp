@@ -1,9 +1,9 @@
-import abc
+
 from abc import ABC
 
 
 class CrossoverOperator(ABC):
-    __metaclass__ = abc.ABCMeta
+    __metaclass__ = ABC.ABCMeta
 
     def __init__(self):
         pass
