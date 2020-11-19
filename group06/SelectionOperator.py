@@ -1,14 +1,12 @@
-import abc
-from abc import ABC
+from abc import ABCMeta, abstractmethod
 
 
-class SelectionOperator(ABC):
-    __metaclass__ = abc.ABCMeta
+class SelectionOperator(metaclass = ABCMeta):
 
     def __init__(self):
         pass
 
-    @abc.abstractmethod
+    @abstractmethod
     def apply(self, genomes, i):
         pass
 

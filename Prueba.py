@@ -1,22 +1,19 @@
-# import numpy as np
-
+from group06.EA import EA
+import numpy as np
 
 def f(x):
-    return 1/x
+    return sum(x)
     pass
 
 def main():
-    # tupla = np.array([1, 4, 3, 6, 2])
-    # tupla = np.append(tupla[1:5], [9, 5])
-    # lista = [2, 5, 8, 1, 3]
-    # lista.insert(0, 7)
-    # lista.sort(key = f)
-    
-    # print(lista)
-
-    tupla = [(1, 9)]*5
-    
-    print(len(tupla))
+    mybounds = [(0, 8)] * 6
+    myea = EA(f, mybounds, 50)
+    myea.run(5000)
+    bestSol = myea.best()
+    print("ultima pob")
+    myea.currentGen.print()
+    print("Best Genoma:")
+    print("\tSolution: {}, Fitnes: {}".format(bestSol.solution, bestSol.fitnes))
     pass
 
 if __name__ == "__main__":

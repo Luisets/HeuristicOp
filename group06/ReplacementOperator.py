@@ -1,14 +1,12 @@
-import abc
-from abc import ABC
+from abc import ABCMeta, abstractmethod
 
 
-class ReplacementOperator(ABC):
-    __metaclass__ = abc.ABCMeta
+class ReplacementOperator(metaclass = ABCMeta):
 
     def __init__(self):
         pass
 
-    @abc.abstractmethod
+    @abstractmethod
     def apply(self, poblacionGenomas1, poblacionGenomas2):
         pass
 

@@ -1,13 +1,15 @@
 from .Population import Population as Population
+from .Genome import Genome as Genome
 from .operadores.CurrentToRand import CurrentToRand as Mutation
 from .operadores.Arithmetic import Arithmetic as Crossover
-from .operadores.Uniform import Uniforme as Selection
+from .operadores.Uniform import Uniform as Selection
 from .operadores.Elitist import Elitist as Replacement
+import numpy as np
 
 
 class EA(object):
-    def __init__(self, f_fitnes, bounds, population):
-        self.population = population
+    def __init__(self, f_fitnes, bounds, populationSize):
+        self.populationSize = populationSize
         self.nVar = len(bounds)
         self.min = bounds[0][0]
         self.max = bounds[0][1]
@@ -17,32 +19,53 @@ class EA(object):
 
 
     def run(self, iteraciones):
-        i = 0
-
-        popu = pop.Population(self.population, self.fitnes, self.min, self.max)  # conseguimos la poblacion inicial
-        while i < iteraciones:
-            newGen = pop.Population()
-            j = 0
-            while j < self.population:
-                target = popu.getGenome(j)
-                donor1 = popu.getGenome(0)
-                donor2 = popu.getGenome(self.population / 2)
-                donor3 = popu.getGenome(self.population - 1)
-                mutation = mut.MutationOperator.apply([target, donor1, donor2, donor3])
-                trial = cro.CrossoverOperator.apply([target, mutation])
-                if target.getFitnes() <= trial.getFitnes():
-                    newGen.add(target)
-                    pass
-                else:
-                    newGen.add(trial)
-                    pass
-                j += 1
+        self.currentGen = Population(self.f_fitnes, self.populationSize)  # conseguimos la poblacion inicial
+        self.initPopulation()
+        print("Primera generacion")
+        self.currentGen.print()
+        trialGen = Population(self.f_fitnes, self.populationSize)
+        selector = Selection()
+        mutator = Mutation(self.f_fitnes)
+        replacer = Replacement()
+        crossover = Crossover(self.f_fitnes)
+        for n_gen in range(0, iteraciones):
+            trialGen.clear()
+            for n_indiv in range(0, self.populationSize):
+                selection = selector.apply(self.currentGen, n_indiv)
+                target = selection[0]
+                mutation = self.ensureBounds(mutator.apply(selection))
+                trial = crossover.apply([target, mutation])
+                trialGen.add(trial)
                 pass
-            popu = newGen
-            i += 1
+            self.currentGen = replacer.apply(self.currentGen, trialGen)
             pass
+        self.currentGen.ascOrdered()
         pass
 
-    def best(self):
+    def ensureBounds(self, genome):
+        vInBounds = []
+        for value in genome.solution:
+            if value < self.min:
+                vInBounds.append(self.min)
+                pass
+            elif value > self.max:
+                vInBounds.append(self.max)
+                pass
+            else:
+                vInBounds.append(value)
+                pass
+            pass
+        npArray = np.array(vInBounds)
+        return Genome(npArray, self.f_fitnes(npArray))
+        pass
 
+    def initPopulation(self):
+        for i in range(0, self.populationSize):
+            solution = np.random.uniform(self.min, self.max, self.nVar)
+            self.currentGen.add(Genome(solution, self.f_fitnes(solution)))
+            pass
+        pass
+    
+    def best(self):
+        return  self.currentGen.getGenome(0)
         pass

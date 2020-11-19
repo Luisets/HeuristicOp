@@ -1,14 +1,22 @@
 from ..MutationOperator import MutationOperator
+from ..Genome import Genome as Genome
 import random
 
 
 class CurrentToRand(MutationOperator):
 
+    def __init__(self, f_fitnes):
+        self.f_fitnes = f_fitnes
+        self.F = 0.8
+        pass
+    
     def apply(self, genomes):
-        # completar con F
-        F = random.randint(0, 2)
-        mutant = genomes[0].getGenome() + F * (genomes[3].getGenome - genomes[0].getGenome) + F * (
-                    genomes[1].getGenome - genomes[2].getGenome)
-        return mutant
+        x_i = genomes[0].getSolution()
+        v_1 = genomes[1].getSolution()
+        v_2 = genomes[2].getSolution()
+        v_3 = genomes[3].getSolution()
+        mutant = x_i + self.F * (v_1 - x_i) + self.F * (v_2 - v_3)
+        return Genome(mutant, self.f_fitnes(mutant))
+        pass
 
     pass

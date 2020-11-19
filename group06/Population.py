@@ -9,7 +9,8 @@ class Population:
         self.size = size
         self.f_fitnes = f_fitnes
 
-    def getGenome(self, intdex):
+    def getGenome(self, index):
+        return self.solPopulation[index]
         pass
 
     def add(self, genome):
@@ -32,7 +33,15 @@ class Population:
         self.solPopulation.sort(key = getFitnes, reverse = True)
         pass
 
-    pass
+    def getSize(self):
+        return self.size
+        pass
+
+    def print(self):
+        for gen in self.solPopulation:
+            print("\tsolution: {}, fitnes: {}".format(gen.getSolution(), gen.getFitnes()))
+            pass
+        pass
 
 def getFitnes(genome):
     return genome.fitnes

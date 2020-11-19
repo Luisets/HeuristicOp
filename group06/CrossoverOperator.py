@@ -1,14 +1,9 @@
+from abc import ABCMeta, abstractmethod
 
-from abc import ABC
 
+class CrossoverOperator(metaclass = ABCMeta):
 
-class CrossoverOperator(ABC):
-    __metaclass__ = ABC.ABCMeta
-
-    def __init__(self):
-        pass
-
-    @abc.abstractmethod
+    @abstractmethod
     def apply(self, genomes):
         pass
 
