@@ -6,7 +6,6 @@ from .operadores.Uniform import Uniform as Selection
 from .operadores.Elitist import Elitist as Replacement
 import numpy as np
 
-
 class EA(object):
     def __init__(self, f_fitnes, bounds, populationSize):
         self.populationSize = populationSize
@@ -16,13 +15,10 @@ class EA(object):
         self.f_fitnes = f_fitnes
         pass
 
-
-
     def run(self, iteraciones):
-        self.currentGen = Population(self.f_fitnes, self.populationSize)  # conseguimos la poblacion inicial
+        # conseguimos la poblacion inicial
+        self.currentGen = Population(self.f_fitnes, self.populationSize)  
         self.initPopulation()
-        print("Primera generacion")
-        self.currentGen.print()
         trialGen = Population(self.f_fitnes, self.populationSize)
         selector = Selection()
         mutator = Mutation(self.f_fitnes)

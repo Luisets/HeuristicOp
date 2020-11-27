@@ -1,7 +1,5 @@
 from ..MutationOperator import MutationOperator
 from ..Genome import Genome as Genome
-import random
-
 
 class CurrentToRand(MutationOperator):
 

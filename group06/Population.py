@@ -37,9 +37,10 @@ class Population:
         return self.size
         pass
 
+    # Esto se utiliza solo para probar el resultado inicial y final 
     def print(self):
         for gen in self.solPopulation:
-            print("\tsolution: {}, fitnes: {}".format(gen.getSolution(), gen.getFitnes()))
+            print("\tsolution: {}, fitness: {}".format(gen.getSolution(), gen.getFitnes()))
             pass
         pass
 

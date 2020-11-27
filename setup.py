@@ -7,11 +7,11 @@ setuptools.setup(
     name="group06", # Replace with your own username
     version="1.0.0",
     author="group06",
-    author_email="author@example.com",
+    author_email="luis.mlozada@alumnos.upm.es",
     description="Heuristic optimization 1st practical work, by Group 06.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

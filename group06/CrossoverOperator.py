@@ -1,6 +1,5 @@
 from abc import ABCMeta, abstractmethod
 
-
 class CrossoverOperator(metaclass = ABCMeta):
 
     @abstractmethod
