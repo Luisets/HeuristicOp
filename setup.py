@@ -8,7 +8,7 @@ setuptools.setup(
     version="1.0.0",
     author="group06",
     author_email="author@example.com",
-    description="Heuristic optimization 1st practical work, by Group XX.",
+    description="Heuristic optimization 1st practical work, by Group 06.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/pypa/sampleproject",
